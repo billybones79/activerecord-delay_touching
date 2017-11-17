@@ -89,7 +89,7 @@ module ActiveRecord
             next if record.destroyed?
             record.instance_eval do
               write_attribute column, current_time
-              @changed_attributes.except!(*changes.keys)
+              @changed_attributes.except!(*changes.keys) rescue []
             end
           end
         end
